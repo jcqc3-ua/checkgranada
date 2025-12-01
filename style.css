@@ -1,0 +1,314 @@
+/* --- Variables y Resets --- */
+:root {
+  /* Paleta de colores inspirada en la Alhambra */
+  --primary-color: #a83232; /* Rojo terracota */
+  --secondary-color: #d4af37; /* Dorado/Mostaza */
+  --dark-text: #333333;
+  --light-text: #f4f4f4;
+  --bg-light: #f9f9f9;
+  --white: #ffffff;
+
+  /* Tipografía */
+  --font-stack: "Poppins", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth; /* Desplazamiento suave al hacer clic en enlaces */
+}
+
+body {
+  font-family: var(--font-stack);
+  line-height: 1.6;
+  color: var(--dark-text);
+}
+
+/* Utilidades */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+}
+.bg-light {
+  background-color: var(--bg-light);
+}
+.highlight {
+  color: var(--secondary-color);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: 0.3s;
+}
+ul {
+  list-style: none;
+}
+
+/* Botones */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+.btn-primary:hover {
+  background-color: #8a2828;
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: var(--dark-text);
+}
+.btn-secondary:hover {
+  background-color: #c29f30;
+}
+.btn-block {
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+
+/* --- Header & Nav --- */
+.header {
+  background-color: var(--white);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  padding: 1rem 0;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.nav-list {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-list a {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.nav-list a:hover {
+  color: var(--primary-color);
+}
+
+.btn-nav {
+  background-color: var(--primary-color);
+  color: var(--white) !important;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+/* --- Hero Section --- */
+.hero {
+  /* Imagen de fondo impactante. ¡Cámbiala por una tuya de alta calidad! */
+  background-image: url("https://images.unsplash.com/photo-1604937515362-6c362bd148ba?w=1920&auto=format&fit=crop&q=80");
+  background-size: cover;
+  background-position: center;
+  height: 80vh; /* Altura del 80% de la pantalla */
+  display: flex;
+  align-items: center;
+  margin-top: 60px; /* Compensar el header fijo */
+}
+
+.hero-overlay {
+  background-color: rgba(0, 0, 0, 0.5); /* Capa oscura para leer el texto */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.hero-content {
+  text-align: center;
+  color: var(--white);
+  max-width: 800px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+/* --- Secciones Generales --- */
+.section {
+  padding: 4rem 0;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+.section-subtitle {
+  margin-bottom: 3rem;
+  color: #666;
+}
+
+/* --- Grid de Tours (CSS Grid) --- */
+.tours-grid {
+  display: grid;
+  /* Magia responsive: crea columnas automáticas de mínimo 300px */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.tour-card {
+  background-color: var(--white);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s;
+}
+.tour-card:hover {
+  transform: translateY(-5px);
+}
+
+.tour-image {
+  height: 200px;
+  position: relative;
+}
+
+.tour-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.price-tag {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: var(--secondary-color);
+  color: var(--dark-text);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.tour-content {
+  padding: 1.5rem;
+}
+.tour-content h3 {
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+.tour-features {
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+.tour-features li {
+  margin-bottom: 0.3rem;
+}
+.tour-features li::before {
+  content: "✓ ";
+  color: var(--secondary-color);
+}
+
+/* --- Sección Nosotros (Flexbox) --- */
+.about-layout {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}
+.about-text {
+  flex: 1;
+}
+.about-image {
+  flex: 1;
+}
+.about-image img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+.feature-list {
+  margin-top: 1.5rem;
+}
+.feature-list li {
+  margin-bottom: 0.8rem;
+}
+
+/* --- Footer --- */
+.footer {
+  background-color: #222;
+  color: #aaa;
+  padding: 4rem 0 1rem 0;
+}
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+.footer-col h3 {
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+.footer-col a:hover {
+  color: var(--secondary-color);
+}
+.footer-bottom {
+  border-top: 1px solid #444;
+  padding-top: 1.5rem;
+  font-size: 0.8rem;
+}
+
+/* --- Responsive Media Queries (Para Móvil) --- */
+@media (max-width: 768px) {
+  .nav-list {
+    display: none;
+  } /* Menú hamburguesa pendiente para V2 */
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  .hero {
+    height: 60vh;
+  }
+
+  .about-layout {
+    flex-direction: column;
+  }
+  .about-image {
+    order: -1;
+  } /* Pone la imagen primero en móvil */
+}
