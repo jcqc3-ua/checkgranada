@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import ContactForm from '../components/ContactForm.astro';
 
 const pageTitle = "Visitas Privadas Exclusivas a la Alhambra";
 const pageDescription = "Descubre la magia de la Alhambra con visitas guiadas privadas y personalizadas. Grupos reducidos, acceso prioritario y experiencias inolvidables.";
@@ -224,64 +225,8 @@ const gallery = [
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contacto" class="section contact-section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Reserva Tu Visita</h2>
-        <p>Ponte en contacto para planificar tu experiencia personalizada</p>
-      </div>
-      
-      <form class="contact-form" method="POST" action="https://formspree.io/f/xyzzzz">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="nombre">Nombre Completo *</label>
-            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
-          </div>
-          <div class="form-group">
-            <label for="email">Email *</label>
-            <input type="email" id="email" name="email" placeholder="tu@email.com" required />
-          </div>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="telefono">Teléfono *</label>
-            <input type="tel" id="telefono" name="telefono" placeholder="+34 600 000 000" required />
-          </div>
-          <div class="form-group">
-            <label for="personas">Número de Personas *</label>
-            <select id="personas" name="personas" required>
-              <option value="">Selecciona...</option>
-              <option value="1">1 persona</option>
-              <option value="2">2 personas</option>
-              <option value="3">3 personas</option>
-              <option value="4">4 personas</option>
-              <option value="5">5 personas</option>
-              <option value="6">6 personas</option>
-            </select>
-          </div>
-        </div>
-        
-        <div class="form-group">
-          <label for="visita">Tipo de Visita *</label>
-          <select id="visita" name="visita" required>
-            <option value="">Selecciona una visita...</option>
-            <option value="alhambra-completa">Alhambra Completa</option>
-            <option value="palacios-premium">Palacios Nazaríes Premium</option>
-            <option value="jardines-alcazaba">Jardines y Alcazaba</option>
-          </select>
-        </div>
-        
-        <div class="form-group">
-          <label for="mensaje">Mensaje (Preferencias, Horarios, etc.)</label>
-          <textarea id="mensaje" name="mensaje" rows="5" placeholder="Cuéntanos tus preferencias..."></textarea>
-        </div>
-        
-        <button type="submit" class="btn btn-primary btn-large btn-submit">Enviar Solicitud de Reserva</button>
-      </form>
-    </div>
-  </section>
+  <!-- Contact Section with Firebase Integration -->
+  <ContactForm />
 
   <Footer />
 </Layout>

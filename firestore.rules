@@ -1,18 +1,76 @@
-rules_version='2'
-
+rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /{document=**} {
-      // This rule allows anyone with your database reference to view, edit,
-      // and delete all data in your database. It is useful for getting
-      // started, but it is configured to expire after 30 days because it
-      // leaves your app open to attackers. At that time, all client
-      // requests to your database will be denied.
-      //
-      // Make sure to write security rules for your app before that time, or
-      // else all client requests to your database will be denied until you
-      // update your rules.
-      allow read, write: if request.time < timestamp.date(2025, 12, 31);
+    
+    // ============================================
+    // REGLAS PARA RESERVAS
+    // ============================================
+    match /reservas/{document=**} {
+      // Crear: Permitir si los campos requeridos están presentes y son válidos
+      allow create: if request.resource.data.nombre != null
+                    && request.resource.data.email != null
+                    && request.resource.data.telefono != null
+                    && request.resource.data.personas > 0
+                    && request.resource.data.personas <= 6
+                    && request.resource.data.visita != null
+                    && request.resource.data.keys().hasAll(['nombre', 'email', 'telefono', 'personas', 'visita']);
+      
+      // Leer: Permitir solo a usuarios autenticados
+      allow read: if request.auth != null;
+      
+      // Actualizar: Solo usuarios autenticados pueden actualizar
+      allow update: if request.auth != null;
+      
+      // Eliminar: Solo usuarios autenticados pueden eliminar
+      allow delete: if request.auth != null;
     }
+
+    // ============================================
+    // REGLAS PARA CONFIGURACIÓN PÚBLICA
+    // ============================================
+    match /config/{document=**} {
+      // Permitir lectura pública de configuración
+      allow read: if true;
+      
+      // Solo admin puede escribir
+      allow write: if request.auth != null && request.auth.token.admin == true;
+    }
+
+    // ============================================
+    // REGLAS PARA VISITAS DISPONIBLES
+    // ============================================
+    match /visitas/{document=**} {
+      // Permitir lectura pública
+      allow read: if true;
+      
+      // Solo admin puede escribir
+      allow write: if request.auth != null && request.auth.token.admin == true;
+    }
+
+    // ============================================
+    // REGLAS PARA USUARIOS (ADMIN)
+    // ============================================
+    match /usuarios/{document=**} {
+      // Solo el usuario propietario puede leer su documento
+      allow read: if request.auth.uid == resource.data.uid;
+      
+      // Solo el usuario propietario puede actualizar
+      allow update: if request.auth.uid == resource.data.uid;
+      
+      // Solo admin puede crear usuarios
+      allow create: if request.auth != null && request.auth.token.admin == true;
+    }
+
+    // ============================================
+    // REGLAS PARA LOGS DE AUDITORÍA
+    // ============================================
+    match /logs/{document=**} {
+      // Solo admin puede leer logs
+      allow read: if request.auth != null && request.auth.token.admin == true;
+      
+      // Solo admin puede crear logs
+      allow create: if request.auth != null && request.auth.token.admin == true;
+    }
+
   }
 }

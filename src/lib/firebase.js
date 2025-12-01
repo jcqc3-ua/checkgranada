@@ -1,27 +1,36 @@
-// Import the functions you need from the SDKs you need
+/**
+ * Inicialización de Firebase con configuración centralizada
+ */
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import { getFirestore, enableIndexedDbPersistence } from "firebase/firestore";
+import { getAuth, connectAuthEmulator } from "firebase/auth";
 import { getAnalytics } from "firebase/analytics";
-
-// Your web app's Firebase configuration
-// IMPORTANTE: Reemplaza esto con tu configuración de Firebase
-const firebaseConfig = {
-  apiKey: "AIzaSyCLABCD1234567890XYZ", // Reemplazar
-  authDomain: "checkgranada-project.firebaseapp.com",
-  projectId: "checkgranada-project",
-  storageBucket: "checkgranada-project.appspot.com",
-  messagingSenderId: "1234567890",
-  appId: "1:1234567890:web:abcdef1234567890",
-  measurementId: "G-1234567890",
-};
+import { firebaseConfig } from "./firebaseConfig.js";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Initialize Firebase services
-export const db = getFirestore(app);
-export const auth = getAuth(app);
-export const analytics = getAnalytics(app);
+// Initialize Firestore with persistence
+const db = getFirestore(app);
 
-export default app;
+// Enable offline persistence
+enableIndexedDbPersistence(db).catch((err) => {
+  if (err.code === "failed-precondition") {
+    console.log(
+      "Multiple tabs open, persistence can only be enabled in one tab at a time."
+    );
+  } else if (err.code === "unimplemented") {
+    console.log("The current browser does not support persistence.");
+  }
+});
+
+// Initialize Auth
+const auth = getAuth(app);
+
+// Initialize Analytics (only in production)
+let analytics = null;
+if (typeof window !== "undefined" && import.meta.env.PROD) {
+  analytics = getAnalytics(app);
+}
+
+export { db, auth, analytics, app };
