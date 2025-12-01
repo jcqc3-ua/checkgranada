@@ -26,17 +26,20 @@ src/
 ## 🎯 Características
 
 ✨ **Visitas Privadas**
+
 - Alhambra Completa (4h)
 - Palacios Nazaríes Premium (3h)
 - Jardines y Alcazaba (2.5h)
 
 🎨 **Diseño Moderno**
+
 - Interfaz profesional y atractiva
 - Completamente responsive
 - Galería visual de la Alhambra
 - Testimonios de clientes
 
 📞 **Formulario de Contacto**
+
 - Reserva de visitas
 - Información de grupos
 - Preferencias personalizadas
@@ -44,6 +47,7 @@ src/
 ## 🛠️ Instalación y Uso
 
 ### Requisitos
+
 - Node.js 16+
 - npm o yarn
 
@@ -66,12 +70,14 @@ npm run preview
 ## 📝 Configuración
 
 Edita `astro.config.mjs` para cambiar:
+
 - URL del sitio (`site`)
 - Integrations (plugins)
 
 ## 🌐 Despliegue
 
 El sitio se puede desplegar en:
+
 - Vercel
 - Netlify
 - GitHub Pages
