@@ -1,0 +1,770 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const pageTitle = "Visitas Privadas Exclusivas a la Alhambra";
+const pageDescription = "Descubre la magia de la Alhambra con visitas guiadas privadas y personalizadas. Grupos reducidos, acceso prioritario y experiencias inolvidables.";
+
+const tours = [
+  {
+    id: 1,
+    title: "Alhambra Completa",
+    description: "La experiencia definitiva: Palacios Nazaríes, Alcazaba y Generalife",
+    price: "450€",
+    priceNote: "hasta 6 personas",
+    duration: "4 horas",
+    includes: [
+      "Acceso prioritario sin colas",
+      "Guía privado certificado",
+      "Todas las entradas incluidas",
+      "Ruta optimizada y flexible",
+      "WiFi y auriculares de calidad"
+    ],
+    image: "https://images.pexels.com/photos/14911461/pexels-photo-14911461.jpeg?auto=compress&cs=tinysrgb&w=600"
+  },
+  {
+    id: 2,
+    title: "Palacios Nazaríes Premium",
+    description: "Enfoque exclusivo en los impresionantes Palacios Nazaríes",
+    price: "350€",
+    priceNote: "hasta 6 personas",
+    duration: "3 horas",
+    includes: [
+      "Acceso prioritario",
+      "Guía especializado en arte nazarí",
+      "Entradas incluidas",
+      "Visita en profundidad a cada estancia",
+      "Explicaciones artísticas detalladas"
+    ],
+    image: "https://images.pexels.com/photos/8406914/pexels-photo-8406914.jpeg?auto=compress&cs=tinysrgb&w=600"
+  },
+  {
+    id: 3,
+    title: "Jardines y Alcazaba",
+    description: "Ruta al aire libre con vistas panorámicas de Granada",
+    price: "280€",
+    priceNote: "hasta 6 personas",
+    duration: "2.5 horas",
+    includes: [
+      "Acceso prioritario",
+      "Guía especializado",
+      "Entradas incluidas",
+      "Vistas panorámicas",
+      "Paradas fotográficas estratégicas"
+    ],
+    image: "https://images.pexels.com/photos/3408533/pexels-photo-3408533.jpeg?auto=compress&cs=tinysrgb&w=600"
+  }
+];
+
+const features = [
+  {
+    icon: "👨‍🎓",
+    title: "Guías Certificados",
+    description: "Expertos con credenciales oficiales del patrimonio de la Alhambra"
+  },
+  {
+    icon: "⏰",
+    title: "Acceso Prioritario",
+    description: "Entra sin esperas, entradas aseguradas desde la reserva"
+  },
+  {
+    icon: "👥",
+    title: "Grupos Privados",
+    description: "Máximo 6 personas, experiencias totalmente personalizadas"
+  },
+  {
+    icon: "📱",
+    title: "Tecnología Moderna",
+    description: "Auriculares y sistemas de audio de última generación"
+  },
+  {
+    icon: "🎯",
+    title: "Flexibilidad Total",
+    description: "Horarios y rutas adaptados a tus preferencias"
+  },
+  {
+    icon: "⭐",
+    title: "Garantía de Calidad",
+    description: "Satisfacción garantizada o devolvemos tu dinero"
+  }
+];
+
+const gallery = [
+  { title: "Patio de los Leones", image: "https://images.pexels.com/photos/8406905/pexels-photo-8406905.jpeg?auto=compress&cs=tinysrgb&w=600" },
+  { title: "Alcazaba", image: "https://images.pexels.com/photos/8406914/pexels-photo-8406914.jpeg?auto=compress&cs=tinysrgb&w=600" },
+  { title: "Generalife", image: "https://images.pexels.com/photos/14911461/pexels-photo-14911461.jpeg?auto=compress&cs=tinysrgb&w=600" },
+  { title: "Torres Nazaríes", image: "https://images.pexels.com/photos/3408533/pexels-photo-3408533.jpeg?auto=compress&cs=tinysrgb&w=600" },
+  { title: "Detalles Arquitectónicos", image: "https://images.pexels.com/photos/8406911/pexels-photo-8406911.jpeg?auto=compress&cs=tinysrgb&w=600" },
+  { title: "Vistas Panorámicas", image: "https://images.pexels.com/photos/3408537/pexels-photo-3408537.jpeg?auto=compress&cs=tinysrgb&w=600" }
+];
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header />
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <h1>Visitas Privadas a la Alhambra</h1>
+        <p>Experiencias exclusivas y personalizadas en uno de los monumentos más emblemáticos del mundo.</p>
+        <a href="#visitas" class="btn btn-primary btn-large">
+          Explorar Visitas
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visitas Section -->
+  <section id="visitas" class="section tours-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Nuestras Visitas Privadas</h2>
+        <p>Elige la experiencia que mejor se adapte a ti</p>
+      </div>
+      
+      <div class="tours-grid">
+        {tours.map((tour, index) => (
+          <article class="tour-card">
+            <div class="tour-badge">{index + 1}</div>
+            <div class="tour-image">
+              <img src={tour.image} alt={tour.title} loading="lazy" />
+              <div class="tour-overlay">
+                <span class="price-tag">{tour.price}</span>
+                <span class="price-note">{tour.priceNote}</span>
+              </div>
+            </div>
+            <div class="tour-content">
+              <div class="tour-meta">
+                <span class="duration">⏱️ {tour.duration}</span>
+              </div>
+              <h3>{tour.title}</h3>
+              <p>{tour.description}</p>
+              <ul class="tour-features">
+                {tour.includes.map(feature => (
+                  <li><span class="check">✓</span>{feature}</li>
+                ))}
+              </ul>
+              <a href="#contacto" class="btn btn-secondary btn-block">Reservar Privado</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="caracteristicas" class="section features-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>¿Por Qué Elegirnos?</h2>
+        <p>Experiencias incomparables con los mejores profesionales</p>
+      </div>
+      
+      <div class="features-grid">
+        {features.map((feature, index) => (
+          <div class="feature-box">
+            <div class="feature-icon-large">{feature.icon}</div>
+            <h3>{feature.title}</h3>
+            <p>{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Galería Section -->
+  <section id="galeria" class="section gallery-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Galería Visual</h2>
+        <p>Descubre la belleza de la Alhambra a través de nuestras imágenes</p>
+      </div>
+      
+      <div class="gallery-grid">
+        {gallery.map((item) => (
+          <div class="gallery-item">
+            <img src={item.image} alt={item.title} loading="lazy" />
+            <div class="gallery-overlay">
+              <h4>{item.title}</h4>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonios Section -->
+  <section class="section testimonios-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Lo Que Nuestros Clientes Dicen</h2>
+        <p>Opiniones de viajeros que han disfrutado nuestras visitas privadas</p>
+      </div>
+      
+      <div class="testimonios-grid">
+        <div class="testimonio-card">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p>"Una experiencia inolvidable. El guía fue excepcional, muy profesional y apasionado. Recomendado 100%."</p>
+          <p class="autor">- María García, Madrid</p>
+        </div>
+        <div class="testimonio-card">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p>"Acceso sin colas, atención personalizada, grupos pequeños. Exactamente lo que buscábamos. ¡Volveremos!"</p>
+          <p class="autor">- Juan López, Barcelona</p>
+        </div>
+        <div class="testimonio-card">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p>"La mejor forma de conocer la Alhambra. Los detalles y explicaciones hicieron que cada rincón cobrara vida."</p>
+          <p class="autor">- Sophie Dupont, París</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contacto" class="section contact-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Reserva Tu Visita</h2>
+        <p>Ponte en contacto para planificar tu experiencia personalizada</p>
+      </div>
+      
+      <form class="contact-form" method="POST" action="https://formspree.io/f/xyzzzz">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nombre">Nombre Completo *</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" placeholder="tu@email.com" required />
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="telefono">Teléfono *</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="+34 600 000 000" required />
+          </div>
+          <div class="form-group">
+            <label for="personas">Número de Personas *</label>
+            <select id="personas" name="personas" required>
+              <option value="">Selecciona...</option>
+              <option value="1">1 persona</option>
+              <option value="2">2 personas</option>
+              <option value="3">3 personas</option>
+              <option value="4">4 personas</option>
+              <option value="5">5 personas</option>
+              <option value="6">6 personas</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="visita">Tipo de Visita *</label>
+          <select id="visita" name="visita" required>
+            <option value="">Selecciona una visita...</option>
+            <option value="alhambra-completa">Alhambra Completa</option>
+            <option value="palacios-premium">Palacios Nazaríes Premium</option>
+            <option value="jardines-alcazaba">Jardines y Alcazaba</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="mensaje">Mensaje (Preferencias, Horarios, etc.)</label>
+          <textarea id="mensaje" name="mensaje" rows="5" placeholder="Cuéntanos tus preferencias..."></textarea>
+        </div>
+        
+        <button type="submit" class="btn btn-primary btn-large btn-submit">Enviar Solicitud de Reserva</button>
+      </form>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: var(--white);
+    padding: 120px 0 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 500px;
+    height: 500px;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="rgba(212,175,55,0.05)"/></svg>');
+    opacity: 0.2;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-text h1 {
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .hero-text p {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.95;
+    line-height: 1.7;
+    max-width: 600px;
+  }
+
+  .arrow {
+    margin-left: 0.5rem;
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+
+  .btn:hover .arrow {
+    transform: translateX(5px);
+  }
+
+  /* Sections */
+  .section {
+    padding: 6rem 0;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .section-header h2 {
+    margin-bottom: 0.8rem;
+    color: var(--text-dark);
+  }
+
+  .section-header p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .tours-section {
+    background: var(--bg-light);
+  }
+
+  .features-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, var(--white) 100%);
+  }
+
+  .gallery-section {
+    background: var(--bg-light);
+  }
+
+  .contact-section {
+    background: linear-gradient(135deg, var(--bg-light) 0%, var(--white) 100%);
+  }
+
+  /* Tours Grid */
+  .tours-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+  }
+
+  .tour-card {
+    background: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tour-card:hover {
+    transform: translateY(-12px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .tour-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: var(--white);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    z-index: 10;
+  }
+
+  .tour-image {
+    position: relative;
+    height: 280px;
+    overflow: hidden;
+  }
+
+  .tour-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .tour-card:hover .tour-image img {
+    transform: scale(1.08);
+  }
+
+  .tour-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 1.5rem;
+  }
+
+  .price-tag {
+    background: linear-gradient(135deg, var(--secondary), #c29f30);
+    color: var(--text-dark);
+    padding: 0.7rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+  }
+
+  .price-note {
+    color: var(--white);
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+  }
+
+  .tour-content {
+    padding: 2rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tour-meta {
+    margin-bottom: 1rem;
+  }
+
+  .duration {
+    display: inline-block;
+    background: var(--bg-light);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--text-dark);
+  }
+
+  .tour-content h3 {
+    margin-bottom: 0.8rem;
+    color: var(--text-dark);
+  }
+
+  .tour-content p {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    flex-grow: 1;
+  }
+
+  .tour-features {
+    list-style: none;
+    margin: 1.5rem 0;
+    padding: 1.5rem 0;
+    border-top: 2px solid var(--bg-light);
+    border-bottom: 2px solid var(--bg-light);
+  }
+
+  .tour-features li {
+    padding: 0.5rem 0;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: var(--white);
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+
+  .btn-block {
+    display: block;
+    text-align: center;
+    width: 100%;
+  }
+
+  /* Features Grid */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+  }
+
+  .feature-box {
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .feature-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+  }
+
+  .feature-box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+  }
+
+  .feature-icon-large {
+    font-size: 3rem;
+    margin: 1rem 0;
+  }
+
+  .feature-box h3 {
+    color: var(--text-dark);
+    margin: 1rem 0;
+    font-size: 1.3rem;
+  }
+
+  .feature-box p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* Gallery */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .gallery-item {
+    position: relative;
+    height: 280px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    transition: all 0.4s ease;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .gallery-item:hover img {
+    transform: scale(1.1);
+  }
+
+  .gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(168, 50, 50, 0.9), rgba(138, 40, 40, 0.9));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .gallery-item:hover .gallery-overlay {
+    opacity: 1;
+  }
+
+  .gallery-overlay h4 {
+    color: var(--white);
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  /* Testimonios */
+  .testimonios-section {
+    background: var(--bg-light);
+  }
+
+  .testimonios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .testimonio-card {
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    position: relative;
+  }
+
+  .testimonio-card::before {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    left: 1rem;
+    font-size: 3rem;
+    color: var(--secondary);
+    opacity: 0.3;
+  }
+
+  .stars {
+    color: var(--secondary);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .testimonio-card p {
+    color: var(--text-dark);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .autor {
+    color: var(--text-light);
+    font-size: 0.9rem !important;
+    font-weight: 600;
+  }
+
+  /* Contact Form */
+  .contact-form {
+    max-width: 700px;
+    margin: 3rem auto;
+    background: var(--white);
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.7rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: 0.9rem 1.1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: var(--bg-light);
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(168, 50, 50, 0.1);
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: #999;
+  }
+
+  .btn-submit {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero {
+      padding: 80px 0 60px;
+    }
+
+    .hero-text p {
+      font-size: 1rem;
+    }
+
+    .section {
+      padding: 4rem 0;
+    }
+
+    .tours-grid,
+    .features-grid,
+    .gallery-grid,
+    .testimonios-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-form {
+      padding: 2rem;
+    }
+  }
+</style>

@@ -1,0 +1,96 @@
+---
+// Componente Header/Navegación
+---
+
+<header class="header">
+  <div class="container header-content">
+    <a href="/" class="logo">
+      <span class="logo-icon">🏰</span>
+      <span>Alhambra</span><span class="highlight">Tours</span>
+    </a>
+    <nav class="nav">
+      <ul class="nav-list">
+        <li><a href="/#visitas" class="nav-link">Nuestras Visitas</a></li>
+        <li><a href="/#caracteristicas" class="nav-link">Por qué Nosotros</a></li>
+        <li><a href="/#galeria" class="nav-link">Galería</a></li>
+        <li><a href="/#contacto" class="btn btn-primary">Reservar Ahora</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    background: var(--white);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 1rem 0;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.95);
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .logo-icon {
+    font-size: 1.8rem;
+  }
+
+  .highlight {
+    color: var(--secondary);
+  }
+
+  .nav-list {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .nav-link {
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--secondary);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    .nav-list {
+      gap: 1.5rem;
+      font-size: 0.85rem;
+    }
+
+    .logo {
+      font-size: 1.3rem;
+    }
+  }
+</style>

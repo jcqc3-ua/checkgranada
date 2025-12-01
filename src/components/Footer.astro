@@ -1,0 +1,93 @@
+---
+// Componente Footer
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Alhambra Tours Privados</h3>
+        <p>Experiencias exclusivas y personalizadas en la Alhambra de Granada.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Enlaces</h4>
+        <ul>
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/#visitas">Visitas</a></li>
+          <li><a href="/#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contacto</h4>
+        <p>📞 +34 658 123 456</p>
+        <p>📧 info@alhambratours.com</p>
+        <p>📍 Granada, España</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Alhambra Tours Privados. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+    color: var(--text-light);
+    padding: 4rem 0 2rem;
+    margin-top: 5rem;
+    border-top: 3px solid var(--secondary);
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  .footer-section h3,
+  .footer-section h4 {
+    color: var(--secondary);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+
+  .footer-section p {
+    color: #999;
+    font-size: 0.9rem;
+    line-height: 1.8;
+  }
+
+  .footer-section ul {
+    list-style: none;
+  }
+
+  .footer-section ul li {
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-section a {
+    color: #999;
+    transition: color 0.3s ease;
+  }
+
+  .footer-section a:hover {
+    color: var(--secondary);
+  }
+
+  .footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid #444;
+    color: #666;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 768px) {
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>

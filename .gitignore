@@ -1,0 +1,28 @@
+# Astro
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Vite
+.vite
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Env
+.env
+.env.local
+.env.*.local
